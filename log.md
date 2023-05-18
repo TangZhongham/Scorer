@@ -27,3 +27,7 @@
 0518
 
 设计基本程序，页面流转，简单+- 记分功能。
+
+https://stackoverflow.com/questions/58539015/swiftui-respond-to-tap-and-double-tap-with-different-actions
+
+根据链接添加了 单击 +1 双击 -1 的功能。

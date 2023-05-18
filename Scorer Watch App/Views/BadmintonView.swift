@@ -11,36 +11,74 @@ struct BadmintonView: View {
     @State var You = 0
     @State var Rival = 0
     
+    @GestureState private var isDetectingLongPress = false
+    @State private var completedLongPress = false
+    @State var Fuck = 0
+
+    var longPress: some Gesture {
+            LongPressGesture(minimumDuration: 3)
+                .updating($isDetectingLongPress) { currentState, gestureState,
+                        transaction in
+                    gestureState = currentState
+                    transaction.animation = Animation.easeIn(duration: 2.0)
+                }
+                .onEnded { finished in
+                    self.completedLongPress = finished
+                    Fuck += 1
+                    print("LOOOOONG TAP")
+                }
+        }
+
     
     var body: some View {
+        
         Grid {
+            Circle()
+                        .fill(self.isDetectingLongPress ?
+                            Color.red :
+                            (self.completedLongPress ? Color.green : Color.blue))
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .gesture(longPress)
+
             VStack {
 //                GridRow{
                 Image(systemName: "hand.wave")
                 Text("Rival: \(Rival)")
-            }.onTapGesture {
-                Rival += 1
+                Text("Fuck: \(Fuck)")
             }
-            .onTapGesture(count: 2) {
-                Rival -= 1
-                print("Double tapped!")
-            }
+            .gesture(
+                TapGesture(count: 2).onEnded {
+                    print("DOUBLE TAP")
+                    Rival -= 1
+                }.exclusively(before: TapGesture(count: 1).onEnded {
+                    print("SINGLE TAP")
+                    Rival += 1
+                })
+            )
             
             Divider()
                 .gridCellUnsizedAxes(.horizontal)
-            
             
             
             VStack {
                 Text("You: \(You)")
                 Image(systemName: "globe")
             }
-            .onTapGesture {
-                You += 1
-            }.onTapGesture(count: 2) {
-                You -= 1
-            }
+            .gesture(
+                TapGesture(count: 2).onEnded {
+                    print("DOUBLE TAP")
+                    You -= 1
+                }.exclusively(before: TapGesture(count: 1).onEnded {
+                    print("SINGLE TAP")
+                    You += 1
+                })
+            )
         }
+        .gesture(longPress)
+//        .onLongPressGesture(minimumDuration: 2) {
+//                    print("Secret Long Press Action!")
+//                }
+        
     }
 }
 
