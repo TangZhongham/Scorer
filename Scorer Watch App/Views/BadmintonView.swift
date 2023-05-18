@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WatchKit
 
 struct BadmintonView: View {
     @State var You = 0
@@ -26,6 +27,7 @@ struct BadmintonView: View {
                     self.completedLongPress = finished
                     Fuck += 1
                     print("LOOOOONG TAP")
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                 }
         }
 
@@ -55,6 +57,7 @@ struct BadmintonView: View {
                 }.exclusively(before: TapGesture(count: 1).onEnded {
                     print("SINGLE TAP")
                     Rival += 1
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                 })
         )
 //            .edgesIgnoringSafeArea(.all)
@@ -77,6 +80,7 @@ struct BadmintonView: View {
                 }.exclusively(before: TapGesture(count: 1).onEnded {
                     print("SINGLE TAP")
                     You += 1
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 2)!)
                 })
         )
 //            .edgesIgnoringSafeArea(.all)

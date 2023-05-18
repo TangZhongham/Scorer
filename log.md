@@ -31,10 +31,12 @@ timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTi
 
 https://stackoverflow.com/questions/58539015/swiftui-respond-to-tap-and-double-tap-with-different-actions
 
-根据链接添加了 单击 +1 双击 -1 的功能。
+✅ 根据链接添加了 单击 +1 双击 -1 的功能。
 
 https://developer.apple.com/documentation/swiftui/longpressgesture
 
-添加 longpress 功能。
+✅ 添加 longpress 功能。
 
+✅ 添加 sound 功能
 
+今晚or 明天：背后数据结构，先搞简单的计数，然后震动。然后写一个 网球的？
