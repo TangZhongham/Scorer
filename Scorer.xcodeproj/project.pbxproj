@@ -20,6 +20,8 @@
 		111308DA2A15BCCF00711276 /* TrainingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308D92A15BCCF00711276 /* TrainingChart.swift */; };
 		111308DC2A15BCE800711276 /* SportsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308DB2A15BCE800711276 /* SportsList.swift */; };
 		111308DE2A15BF6200711276 /* SportStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308DD2A15BF6200711276 /* SportStartView.swift */; };
+		111308E02A15D88200711276 /* StartSportLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308DF2A15D88200711276 /* StartSportLink.swift */; };
+		111308E22A15DD2800711276 /* BadmintonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308E12A15DD2800711276 /* BadmintonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		111308D92A15BCCF00711276 /* TrainingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingChart.swift; sourceTree = "<group>"; };
 		111308DB2A15BCE800711276 /* SportsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsList.swift; sourceTree = "<group>"; };
 		111308DD2A15BF6200711276 /* SportStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportStartView.swift; sourceTree = "<group>"; };
+		111308DF2A15D88200711276 /* StartSportLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSportLink.swift; sourceTree = "<group>"; };
+		111308E12A15DD2800711276 /* BadmintonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadmintonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +152,9 @@
 			children = (
 				111308D72A15BA7000711276 /* SportRow.swift */,
 				111308DB2A15BCE800711276 /* SportsList.swift */,
+				111308DF2A15D88200711276 /* StartSportLink.swift */,
 				111308DD2A15BF6200711276 /* SportStartView.swift */,
+				111308E12A15DD2800711276 /* BadmintonView.swift */,
 				111308D92A15BCCF00711276 /* TrainingChart.swift */,
 			);
 			path = Views;
@@ -277,6 +283,8 @@
 				111308C42A150E2300711276 /* ContentView.swift in Sources */,
 				111308D82A15BA7000711276 /* SportRow.swift in Sources */,
 				111308DC2A15BCE800711276 /* SportsList.swift in Sources */,
+				111308E22A15DD2800711276 /* BadmintonView.swift in Sources */,
+				111308E02A15D88200711276 /* StartSportLink.swift in Sources */,
 				111308C22A150E2300711276 /* ScorerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

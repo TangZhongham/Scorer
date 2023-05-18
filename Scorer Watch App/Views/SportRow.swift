@@ -11,8 +11,8 @@ struct SportRow: View {
     @State private var showDetail = false
     
     var body: some View {
-        Button {
-            showDetail = true
+        NavigationLink {
+            SportStartView()
         } label: {
             HStack {
                 Text("Swim")
@@ -20,8 +20,32 @@ struct SportRow: View {
                 Spacer()
                 Image(systemName: "checkmark")
 //                    .opacity(item.isComplete ? 100 : 0)
-            }
-        }
+            }        }
+        
+        
+//        NavigationLink(
+//            destination: SportStartView(),
+//            isActive: $showDetail) {
+//                
+//                Button {
+//                    showDetail = true
+//                } label: {
+//                    HStack {
+//                        Text("Swim")
+//        //                    .strikethrough(item.isComplete)
+//                        Spacer()
+//                        Image(systemName: "checkmark")
+//        //                    .opacity(item.isComplete ? 100 : 0)
+//                    }
+//                }
+//                
+//
+////            .buttonStyle(MyButtonStyle)
+//                
+//        }
+        
+        
+
     }
 }
 
