@@ -38,7 +38,6 @@ struct BadmintonView: View {
                             Color.red :
                             (self.completedLongPress ? Color.green : Color.blue))
                         .frame(width: 100, height: 100, alignment: .center)
-                        .gesture(longPress)
 
             VStack {
 //                GridRow{
@@ -75,10 +74,6 @@ struct BadmintonView: View {
             )
         }
         .gesture(longPress)
-//        .onLongPressGesture(minimumDuration: 2) {
-//                    print("Secret Long Press Action!")
-//                }
-        
     }
 }
 

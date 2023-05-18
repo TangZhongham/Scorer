@@ -31,3 +31,9 @@
 https://stackoverflow.com/questions/58539015/swiftui-respond-to-tap-and-double-tap-with-different-actions
 
 根据链接添加了 单击 +1 双击 -1 的功能。
+
+https://developer.apple.com/documentation/swiftui/longpressgesture
+
+添加 longpress 功能。
+
+
