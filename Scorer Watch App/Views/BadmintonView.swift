@@ -33,17 +33,20 @@ struct BadmintonView: View {
     var body: some View {
         
         Grid {
-            Circle()
-                        .fill(self.isDetectingLongPress ?
-                            Color.red :
-                            (self.completedLongPress ? Color.green : Color.blue))
-                        .frame(width: 100, height: 100, alignment: .center)
+//            Circle()
+//                        .fill(self.isDetectingLongPress ?
+//                            Color.red :
+//                            (self.completedLongPress ? Color.green : Color.blue))
+//                        .frame(width: 100, height: 100, alignment: .center)
 
-            VStack {
-//                GridRow{
-                Image(systemName: "hand.wave")
-                Text("Rival: \(Rival)")
-                Text("Fuck: \(Fuck)")
+            ZStack {
+                Color.cyan
+                VStack {
+    //                GridRow{
+//                    Image(systemName: "hand.wave")
+                    Text("Rival: \(Rival)")
+                    Text("Long Press Times: \(Fuck)")
+                }
             }
             .gesture(
                 TapGesture(count: 2).onEnded {
@@ -53,15 +56,19 @@ struct BadmintonView: View {
                     print("SINGLE TAP")
                     Rival += 1
                 })
-            )
+        )
+//            .edgesIgnoringSafeArea(.all)
             
-            Divider()
-                .gridCellUnsizedAxes(.horizontal)
+//            Divider()
+//                .gridCellUnsizedAxes(.horizontal)
             
             
-            VStack {
-                Text("You: \(You)")
-                Image(systemName: "globe")
+            ZStack {
+                Color.pink
+                VStack {
+                    Text("You: \(You)")
+//                    Image(systemName: "globe")
+                }
             }
             .gesture(
                 TapGesture(count: 2).onEnded {
@@ -71,9 +78,14 @@ struct BadmintonView: View {
                     print("SINGLE TAP")
                     You += 1
                 })
-            )
+        )
+//            .edgesIgnoringSafeArea(.all)
         }
         .gesture(longPress)
+//        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
+        
     }
 }
 

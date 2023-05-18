@@ -13,6 +13,7 @@
 
 画草图做初版app
 
+timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTimer%20WatchKit%20Extension/ContentView.swift
 
 
 ## 日期记录

@@ -22,6 +22,7 @@
 		111308DE2A15BF6200711276 /* SportStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308DD2A15BF6200711276 /* SportStartView.swift */; };
 		111308E02A15D88200711276 /* StartSportLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308DF2A15D88200711276 /* StartSportLink.swift */; };
 		111308E22A15DD2800711276 /* BadmintonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111308E12A15DD2800711276 /* BadmintonView.swift */; };
+		118220A92A1613C0000B1BF0 /* BadmintonGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220A82A1613C0000B1BF0 /* BadmintonGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		111308DD2A15BF6200711276 /* SportStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportStartView.swift; sourceTree = "<group>"; };
 		111308DF2A15D88200711276 /* StartSportLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSportLink.swift; sourceTree = "<group>"; };
 		111308E12A15DD2800711276 /* BadmintonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadmintonView.swift; sourceTree = "<group>"; };
+		118220A82A1613C0000B1BF0 /* BadmintonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadmintonGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				111308DF2A15D88200711276 /* StartSportLink.swift */,
 				111308DD2A15BF6200711276 /* SportStartView.swift */,
 				111308E12A15DD2800711276 /* BadmintonView.swift */,
+				118220A82A1613C0000B1BF0 /* BadmintonGridView.swift */,
 				111308D92A15BCCF00711276 /* TrainingChart.swift */,
 			);
 			path = Views;
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				111308DE2A15BF6200711276 /* SportStartView.swift in Sources */,
+				118220A92A1613C0000B1BF0 /* BadmintonGridView.swift in Sources */,
 				111308DA2A15BCCF00711276 /* TrainingChart.swift in Sources */,
 				111308C42A150E2300711276 /* ContentView.swift in Sources */,
 				111308D82A15BA7000711276 /* SportRow.swift in Sources */,
