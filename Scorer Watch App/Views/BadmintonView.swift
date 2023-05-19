@@ -20,11 +20,11 @@ struct BadmintonView: View {
     
 
     var longPress: some Gesture {
-            LongPressGesture(minimumDuration: 3)
+        LongPressGesture(minimumDuration: 0.7)
                 .updating($isDetectingLongPress) { currentState, gestureState,
                         transaction in
                     gestureState = currentState
-                    transaction.animation = Animation.easeIn(duration: 2.0)
+                    transaction.animation = Animation.easeIn(duration: 1.0)
                 }
                 .onEnded { finished in
                     Fuck += 1

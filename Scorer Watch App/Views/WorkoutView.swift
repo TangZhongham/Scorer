@@ -22,6 +22,21 @@ struct WorkoutView: View {
     @State var isActive : Bool = false
     
     var body: some View {
+        List {
+            ForEach(workouts) { workout in
+                //                WorkoutCellView(workout: workout)
+                // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
+                NavigationLink(destination: BadmintonView().environmentObject(appState)
+                    .transition(.opacity)
+                    .animation(.easeIn), isActive: $appState.moveToRoot) {
+                    WorkoutCellView(workout: workout).environmentObject(appState)
+                }
+            }
+        }
+        .navigationBarTitle("Scorer")
+        .listStyle(.carousel)
+        
+        
         //        TabView {
         //            List {
         //                ForEach(workouts) { workout in
@@ -41,23 +56,6 @@ struct WorkoutView: View {
         //                .tag(1)
         //        }
         //        .tabViewStyle(.page)
-        
-        List {
-            ForEach(workouts) { workout in
-                //                WorkoutCellView(workout: workout)
-                // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
-                NavigationLink(destination: BadmintonView().environmentObject(appState)
-                    .transition(.opacity)
-                    .animation(.easeIn), isActive: $appState.moveToRoot) {
-                    WorkoutCellView(workout: workout).environmentObject(appState)
-                }
-            }
-        }
-        .navigationBarTitle("Scorer")
-        .listStyle(.carousel)
-        
-        
-        
     }
 }
 
