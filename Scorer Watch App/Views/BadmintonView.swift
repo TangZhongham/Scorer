@@ -27,7 +27,8 @@ struct BadmintonView: View {
                     self.completedLongPress = finished
                     Fuck += 1
                     print("LOOOOONG TAP")
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                    // click
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
                 }
         }
 
@@ -54,10 +55,12 @@ struct BadmintonView: View {
                 TapGesture(count: 2).onEnded {
                     print("DOUBLE TAP")
                     Rival -= 1
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                 }.exclusively(before: TapGesture(count: 1).onEnded {
                     print("SINGLE TAP")
                     Rival += 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+                    
                 })
         )
 //            .edgesIgnoringSafeArea(.all)
@@ -77,10 +80,11 @@ struct BadmintonView: View {
                 TapGesture(count: 2).onEnded {
                     print("DOUBLE TAP")
                     You -= 1
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                 }.exclusively(before: TapGesture(count: 1).onEnded {
                     print("SINGLE TAP")
                     You += 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 2)!)
+                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                 })
         )
 //            .edgesIgnoringSafeArea(.all)

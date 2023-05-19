@@ -15,6 +15,10 @@
 
 timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTimer%20WatchKit%20Extension/ContentView.swift
 
+## 开发记录
+
+目标项目用的haptic 是 加分：Success 。双击取消：Retry，长按只有震动，应该是 click
+
 
 ## 日期记录
 
@@ -40,3 +44,7 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 ✅ 添加 sound 功能
 
 今晚or 明天：背后数据结构，先搞简单的计数，然后震动。然后写一个 网球的？
+
+0519
+
+
