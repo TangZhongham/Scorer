@@ -28,6 +28,10 @@ Pop to root view 使用：https://stackoverflow.com/questions/62207710/swiftui-h
 
 暂时没使用 NavigationStack 是因为 build 后部分全屏显示的被取消了，可能是苹果bug，所以全局暂时用 navigationlink 路由。
 
+animation + transition: https://swiftui-lab.com/advanced-transitions/
+
+数字可参考实现点击震动效果：https://benoitpasquier.com/create-watchos-app-in-swiftui/
+
 ## 日期记录
 
 0517:
@@ -62,3 +66,5 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 结果发现另一个帖子说 只要注释掉那一行照样 work 。。。 客户端开发就是这点蛋疼，苹果说了算。https://stackoverflow.com/questions/62207710/swiftui-how-can-i-pop-to-the-root-view-for-watchos
 
 ✅ 完成 从第三页向首页回归。pop to root view
+
+✅ 之前上下两个颜色中间有条线，其实只要在 父VStack 加上 spacing:0 就可以了

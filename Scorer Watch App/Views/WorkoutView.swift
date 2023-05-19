@@ -27,8 +27,11 @@ struct WorkoutView: View {
                 //                WorkoutCellView(workout: workout)
                 // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
                 NavigationLink(destination: BadmintonView().environmentObject(appState)
-                    .transition(.opacity)
-                    .animation(.easeIn), isActive: $appState.moveToRoot) {
+                    .transition(.asymmetric(insertion: .opacity, removal: .scale))
+
+//                    .transition(.opacity)
+//                    .animation(.easeIn)
+                               , isActive: $appState.moveToRoot) {
                     WorkoutCellView(workout: workout).environmentObject(appState)
                 }
             }

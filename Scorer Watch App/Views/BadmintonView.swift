@@ -18,35 +18,37 @@ struct BadmintonView: View {
     
     @EnvironmentObject var appState : AppState
     
-
+    
     var longPress: some Gesture {
         LongPressGesture(minimumDuration: 0.7)
-                .updating($isDetectingLongPress) { currentState, gestureState,
-                        transaction in
-                    gestureState = currentState
-                    transaction.animation = Animation.easeIn(duration: 1.0)
-                }
-                .onEnded { finished in
-                    Fuck += 1
-                    print("LOOOOONG TAP")
-                    // click
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
-                    completedLongPress = finished
-                }
-        }
-
+            .updating($isDetectingLongPress) { currentState, gestureState,
+                transaction in
+                gestureState = currentState
+                transaction.animation = Animation.easeIn(duration: 1.0)
+            }
+            .onEnded { finished in
+                Fuck += 1
+                print("LOOOOONG TAP")
+                // click
+                WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
+                completedLongPress = finished
+            }
+    }
     
     var body: some View {
-
         
-        Grid {
+        VStack(alignment: .center, spacing: 0) {
+
             ZStack {
+
                 Color.cyan
-                VStack {
+                VStack(spacing: 0) {
                     Text("Rival: \(Rival)")
-                    Text("Long Press Times: \(Fuck)")
+                    //                    Text("Long Press Times: \(Fuck)")
                 }
             }
+            .border(Color.black, width: 0)  
+            .edgesIgnoringSafeArea(.all)
             .gesture(
                 TapGesture(count: 2).onEnded {
                     print("DOUBLE TAP")
@@ -56,20 +58,22 @@ struct BadmintonView: View {
                     print("SINGLE TAP")
                     Rival += 1
                     WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
-
+                    
                 })
-        )
-
-//            Divider()
-//                .gridCellUnsizedAxes(.horizontal)
-
+            )
+            
+            //            Divider()
+            //                .gridCellUnsizedAxes(.horizontal)
+            
             ZStack {
-                Color.pink
-                VStack {
+                Color.pink.edgesIgnoringSafeArea(.all)
+                VStack(spacing: 0) {
                     Text("You: \(You)")
-//                    Image(systemName: "globe")
+                    //                    Image(systemName: "globe")
                 }
             }
+            .border(Color.black, width: 0)
+            .edgesIgnoringSafeArea(.all)
             .gesture(
                 TapGesture(count: 2).onEnded {
                     print("DOUBLE TAP")
@@ -80,78 +84,81 @@ struct BadmintonView: View {
                     You += 1
                     WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                 })
-        )
+            )
         }
         .gesture(longPress)
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         // 用了 fullScreenCover 所以 transition 没用
-        .fullScreenCover(isPresented: $completedLongPress) {
+        //        .fullScreenCover(isPresented: $completedLongPress) {
+        //            BadmintonPauseView().environmentObject(appState).transition(.scale)
+        //        }
+        .sheet(isPresented: $completedLongPress) {
             BadmintonPauseView().environmentObject(appState).transition(.scale)
         }
     }
     
     
     // 想用 NavigationLink 替换 fullScreenCover 让transition 好看一点，但是整个UI会崩掉。。。
-//        NavigationLink(destination: BadmintonPauseView().environmentObject(appState).transition(.scale), isActive: $completedLongPress) {
-//            Grid {
-//    //            Circle()
-//    //                        .fill(self.isDetectingLongPress ?
-//    //                            Color.red :
-//    //                            (self.completedLongPress ? Color.green : Color.blue))
-//    //                        .frame(width: 100, height: 100, alignment: .center)
-//
-//                ZStack {
-//                    Color.cyan
-//                    VStack {
-//        //                GridRow{
-//    //                    Image(systemName: "hand.wave")
-//                        Text("Rival: \(Rival)")
-//                        Text("Long Press Times: \(Fuck)")
-//                    }
-//                }
-//                .gesture(
-//                    TapGesture(count: 2).onEnded {
-//                        print("DOUBLE TAP")
-//                        Rival -= 1
-//                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-//                    }.exclusively(before: TapGesture(count: 1).onEnded {
-//                        print("SINGLE TAP")
-//                        Rival += 1
-//                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
-//
-//                    })
-//            )
-//    //            .edgesIgnoringSafeArea(.all)
-//
-//    //            Divider()
-//    //                .gridCellUnsizedAxes(.horizontal)
-//
-//
-//                ZStack {
-//                    Color.pink
-//                    VStack {
-//                        Text("You: \(You)")
-//    //                    Image(systemName: "globe")
-//                    }
-//                }
-//                .gesture(
-//                    TapGesture(count: 2).onEnded {
-//                        print("DOUBLE TAP")
-//                        You -= 1
-//                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-//                    }.exclusively(before: TapGesture(count: 1).onEnded {
-//                        print("SINGLE TAP")
-//                        You += 1
-//                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
-//                    })
-//            )
-//            }
-//            .gesture(longPress)
-//            .edgesIgnoringSafeArea(.all)
-//            .navigationBarHidden(true)
-//        }.edgesIgnoringSafeArea(.all)
-//            .navigationBarHidden(true)
+    //        NavigationLink(destination: BadmintonPauseView().environmentObject(appState).transition(.scale), isActive: $completedLongPress) {
+    //            Grid {
+    //    //            Circle()
+    //    //                        .fill(self.isDetectingLongPress ?
+    //    //                            Color.red :
+    //    //                            (self.completedLongPress ? Color.green : Color.blue))
+    //    //                        .frame(width: 100, height: 100, alignment: .center)
+    //
+    //                ZStack {
+    //                    Color.cyan
+    //                    VStack {
+    //        //                GridRow{
+    //    //                    Image(systemName: "hand.wave")
+    //                        Text("Rival: \(Rival)")
+    //                        Text("Long Press Times: \(Fuck)")
+    //                    }
+    //                }
+    //                .gesture(
+    //                    TapGesture(count: 2).onEnded {
+    //                        print("DOUBLE TAP")
+    //                        Rival -= 1
+    //                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+    //                    }.exclusively(before: TapGesture(count: 1).onEnded {
+    //                        print("SINGLE TAP")
+    //                        Rival += 1
+    //                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+    //
+    //                    })
+    //            )
+    //    //            .edgesIgnoringSafeArea(.all)
+    //
+    //    //            Divider()
+    //    //                .gridCellUnsizedAxes(.horizontal)
+    //
+    //
+    //                ZStack {
+    //                    Color.pink
+    //                    VStack {
+    //                        Text("You: \(You)")
+    //    //                    Image(systemName: "globe")
+    //                    }
+    //                }
+    //                .gesture(
+    //                    TapGesture(count: 2).onEnded {
+    //                        print("DOUBLE TAP")
+    //                        You -= 1
+    //                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+    //                    }.exclusively(before: TapGesture(count: 1).onEnded {
+    //                        print("SINGLE TAP")
+    //                        You += 1
+    //                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+    //                    })
+    //            )
+    //            }
+    //            .gesture(longPress)
+    //            .edgesIgnoringSafeArea(.all)
+    //            .navigationBarHidden(true)
+    //        }.edgesIgnoringSafeArea(.all)
+    //            .navigationBarHidden(true)
     /////////////////
 }
 
