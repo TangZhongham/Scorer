@@ -17,7 +17,7 @@ struct BadmintonView: View {
     @State var Fuck = 0
     
     @EnvironmentObject var appState : AppState
-    
+    @State var workout: Workout
     
     var longPress: some Gesture {
         LongPressGesture(minimumDuration: 0.7)
@@ -37,18 +37,25 @@ struct BadmintonView: View {
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 0) {
-            GeometryReader{g in
-                ZStack {
-                    
-                    Color.cyan
-                    VStack(spacing: 0) {
-                        Text("Rival: \(Rival)")
-                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
-                        //                    Text("Long Press Times: \(Fuck)")
+        // 加在这也不行，有一定几率即使不满足条件也会走进去 "Waiting for dev..."
+        // 最怕就是只有模拟器是这样。。。
+//        if(workout.name != "简单计分板") {
+//            Text("Waiting for dev...")
+//        } else {
+            
+            VStack(alignment: .center, spacing: 0) {
+                GeometryReader{g in
+                    ZStack {
+                        
+                        Color.cyan
+                        VStack(spacing: 0) {
+                            Text("Rival: \(Rival)")
+                            //                            .font(.largeTitle)
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
+                            //                    Text("Long Press Times: \(Fuck)")
+                        }
                     }
                 }
-                            }
                 .border(Color.black, width: 0)
                 .edgesIgnoringSafeArea(.all)
                 .gesture(
@@ -66,14 +73,14 @@ struct BadmintonView: View {
                 
                 //            Divider()
                 //                .gridCellUnsizedAxes(.horizontal)
-            GeometryReader{g in
-                ZStack {
-                    Color.pink.edgesIgnoringSafeArea(.all)
-                    VStack(spacing: 0) {
-                        Text("You: \(You)")
-                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
-                    }
-                }}
+                GeometryReader{g in
+                    ZStack {
+                        Color.pink.edgesIgnoringSafeArea(.all)
+                        VStack(spacing: 0) {
+                            Text("You: \(You)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
+                        }
+                    }}
                 .border(Color.black, width: 0)
                 .edgesIgnoringSafeArea(.all)
                 .gesture(
@@ -88,16 +95,19 @@ struct BadmintonView: View {
                     })
                 )
             }
-        .gesture(longPress)
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
-        // 用了 fullScreenCover 所以 transition 没用
-        //        .fullScreenCover(isPresented: $completedLongPress) {
-        //            BadmintonPauseView().environmentObject(appState).transition(.scale)
-        //        }
-        .sheet(isPresented: $completedLongPress) {
-            BadmintonPauseView().environmentObject(appState).transition(.scale)
-        }
+            .gesture(longPress)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarHidden(true)
+            // 用了 fullScreenCover 所以 transition 没用
+            //        .fullScreenCover(isPresented: $completedLongPress) {
+            //            BadmintonPauseView().environmentObject(appState).transition(.scale)
+            //        }
+            .sheet(isPresented: $completedLongPress) {
+                BadmintonPauseView().environmentObject(appState).transition(.scale)
+            }
+            
+//        }
+        
     }
     
     
@@ -165,7 +175,9 @@ struct BadmintonView: View {
 }
 
 struct BadmintonView_Previews: PreviewProvider {
+    static let workout = Workout(name: "简单计分板", symbolName: "face.smiling")
+    
     static var previews: some View {
-        BadmintonView()
+        BadmintonView(workout: workout)
     }
 }

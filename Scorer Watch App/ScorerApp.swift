@@ -11,11 +11,14 @@ import SwiftUI
 struct Scorer_Watch_AppApp: App {
     var appState = AppState()
     
+    @StateObject var workoutstatemodel = WorkoutStateModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
                     .environmentObject(appState)
+                    .environmentObject(workoutstatemodel)
             }
         }
     }
