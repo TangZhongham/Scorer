@@ -15,6 +15,8 @@
 
 timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTimer%20WatchKit%20Extension/ContentView.swift
 
+可以最后polish 的时候再弄 animatino / transition
+
 ## 开发记录
 
 Haptic: 
