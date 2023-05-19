@@ -14,7 +14,7 @@ struct SportsList: View {
             SportRow()
             SportRow()
         }
-        .navigationTitle("Scorer")
+//        .navigationTitle("Scorer")
     }
 }
 

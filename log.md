@@ -17,7 +17,10 @@ timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTi
 
 ## 开发记录
 
-目标项目用的haptic 是 加分：Success 。双击取消：Retry，长按只有震动，应该是 click
+Haptic: 
+自己用的是：Direction Up, Success, 取消是：Failure. https://developer.apple.com/documentation/watchkit/wkhaptictype
+
+目标项目用的haptic 是 加分：Success 。双击取消：Retry，长按只有震动，应该是 click .https://developer.apple.com/documentation/watchkit/wkhaptictype
 
 
 ## 日期记录
@@ -47,4 +50,4 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 
 0519
 
-
+✅ 完成 haptic 设计。考虑背后数据结构。

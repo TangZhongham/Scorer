@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+//    var body: some View {
+////            Image(systemName: "globe")
+////                .imageScale(.large)
+////                .foregroundColor(.accentColor)
+////            Text("Hello, world!")
+//            TabView {
+//                NavigationStack {
+//                    SportsList()
+//                }
+//                NavigationStack {
+//                    TrainingChart()
+//                }
+//            }.tabViewStyle(.page)
+//    }
+    
     var body: some View {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
-//            Text("Hello, world!")
-            TabView {
-                NavigationStack {
-                    SportsList()
-                }
-                NavigationStack {
-                    TrainingChart()
-                }
-            }.tabViewStyle(.page)
+        WorkoutView()
     }
 }
 
