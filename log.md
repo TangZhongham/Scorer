@@ -19,6 +19,9 @@ timer 可参考：https://github.com/sunshaped/watchOS-zen-timer/blob/main/ZenTi
 
 iOS 上的 user setting 页面可以用 UserDefaults 的字典去persist  ：https://www.simpleswiftguide.com/how-to-use-userdefaults-in-swiftui/
 
+persisit data 参考：https://developer.apple.com/tutorials/app-dev-training/persisting-data
+
+
 ## 开发记录
 
 Haptic: 

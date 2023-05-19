@@ -23,10 +23,21 @@ struct WorkoutView: View {
     @State var selectedItem = 0
     
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var workoutStateModel: WorkoutStateModel
     @State var isActive : Bool = false
     
     var body: some View {
         List {
+            // 发现用observable object 选择也有 NavigationLink 的bug，先不管了，开发功能要紧
+            ForEach(workoutStateModel.workouts) { workout in
+                NavigationLink(destination: Text("Still developing \(workout.name)...")
+                    .transition(.asymmetric(insertion: .opacity, removal: .scale))
+                               , isActive: $appState.moveToRoot) {
+                    Text("New \(workout.name)")
+                    Image(systemName: workout.symbolName)
+                }
+            }
+            
             NavigationLink(destination: Text("Still developing 羽毛球...")
                 .transition(.asymmetric(insertion: .opacity, removal: .scale))
                            , isActive: $appState.moveToRoot) {
