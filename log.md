@@ -22,6 +22,9 @@ Haptic:
 
 目标项目用的haptic 是 加分：Success 。双击取消：Retry，长按只有震动，应该是 click .https://developer.apple.com/documentation/watchkit/wkhaptictype
 
+Pop to root view 使用：https://stackoverflow.com/questions/62207710/swiftui-how-can-i-pop-to-the-root-view-for-watchos 注释掉.isDetailLink(false)
+
+暂时没使用 NavigationStack 是因为 build 后部分全屏显示的被取消了，可能是苹果bug，所以全局暂时用 navigationlink 路由。
 
 ## 日期记录
 
@@ -51,3 +54,9 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 0519
 
 ✅ 完成 haptic 设计。考虑背后数据结构。
+
+卡在了 从 view2 弹到 主view 这个操作上面，看到一种实现，但是 watchos 不支持 .isDetailLink(false) :https://thinkdiff.net/swiftui-how-to-pop-to-root-view-e27fa0dc8fa8
+
+结果发现另一个帖子说 只要注释掉那一行照样 work 。。。 客户端开发就是这点蛋疼，苹果说了算。https://stackoverflow.com/questions/62207710/swiftui-how-can-i-pop-to-the-root-view-for-watchos
+
+✅ 完成 从第三页向首页回归。pop to root view

@@ -11,24 +11,50 @@ struct WorkoutView: View {
     
     let workouts = [
         Workout(name: "Badminton Battle", symbolName: "person.2"),
-        Workout(name: "Outdoor Walk", symbolName: "figure.walk"),
-        Workout(name: "Outdoor Bike", symbolName: "bicycle"),
+        Workout(name: "Simple Compete", symbolName: "figure.walk"),
+        Workout(name: "Simple Single", symbolName: "bicycle"),
         Workout(name: "Outdoor Bike", symbolName: "bicycle"),
     ]
     
+    @State var selectedItem = 0
+    
+    @EnvironmentObject var appState: AppState
+    @State var isActive : Bool = false
+    
     var body: some View {
+        //        TabView {
+        //            List {
+        //                ForEach(workouts) { workout in
+        //                    //                WorkoutCellView(workout: workout)
+        //                    // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
+        //                    NavigationLink(destination: BadmintonView()) {
+        //                        WorkoutCellView(workout: workout)
+        //                    }
+        //
+        //                }
+        //            }
+        //            .navigationBarTitle("Scorer")
+        //            .listStyle(.carousel)
+        //            .tag(0)
+        //
+        //            TrainingChart()
+        //                .tag(1)
+        //        }
+        //        .tabViewStyle(.page)
+        
         List {
             ForEach(workouts) { workout in
-                WorkoutCellView(workout: workout)
-//                NavigationLink(destination: StartSportLink()) {
-//                    WorkoutCellView(workout: workout)
-//                }
-                    
+                //                WorkoutCellView(workout: workout)
+                // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
+                NavigationLink(destination: BadmintonView().environmentObject(appState), isActive: $appState.moveToRoot) {
+                    WorkoutCellView(workout: workout).environmentObject(appState)
+                }
             }
         }
-        .navigationBarTitle("Workout")
-        .navigationTitle("Scorer")
+        .navigationBarTitle("Scorer")
         .listStyle(.carousel)
+        
+        
         
     }
 }

@@ -13,8 +13,11 @@ struct BadmintonView: View {
     @State var Rival = 0
     
     @GestureState private var isDetectingLongPress = false
-    @State private var completedLongPress = false
+    @State var completedLongPress = false
     @State var Fuck = 0
+    
+    @EnvironmentObject var appState : AppState
+    
 
     var longPress: some Gesture {
             LongPressGesture(minimumDuration: 3)
@@ -24,11 +27,11 @@ struct BadmintonView: View {
                     transaction.animation = Animation.easeIn(duration: 2.0)
                 }
                 .onEnded { finished in
-                    self.completedLongPress = finished
                     Fuck += 1
                     print("LOOOOONG TAP")
                     // click
                     WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
+                    completedLongPress = finished
                 }
         }
 
@@ -87,13 +90,13 @@ struct BadmintonView: View {
                     WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                 })
         )
-//            .edgesIgnoringSafeArea(.all)
         }
         .gesture(longPress)
-//        .ignoresSafeArea()
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-        
+        .fullScreenCover(isPresented: $completedLongPress) {
+            BadmintonPauseView().environmentObject(appState)
+        }
     }
 }
 

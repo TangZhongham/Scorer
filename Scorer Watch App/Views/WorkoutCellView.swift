@@ -10,6 +10,8 @@ import SwiftUI
 struct WorkoutCellView: View {
     let workout: Workout
     
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
               HStack(alignment: .top) {
@@ -19,7 +21,7 @@ struct WorkoutCellView: View {
                   .resizable()
                   .aspectRatio(contentMode: .fit)
                   .frame(width: 96, height: 40, alignment: .leading)
-                  .foregroundColor(.green)
+                  .foregroundColor(.mint)
                   
                 Spacer()
                 // The ellipsis

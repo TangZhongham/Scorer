@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct Scorer_Watch_AppApp: App {
+    var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .environmentObject(appState)
             }
         }
     }
