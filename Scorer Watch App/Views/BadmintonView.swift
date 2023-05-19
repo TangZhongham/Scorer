@@ -38,54 +38,56 @@ struct BadmintonView: View {
     var body: some View {
         
         VStack(alignment: .center, spacing: 0) {
-
-            ZStack {
-
-                Color.cyan
-                VStack(spacing: 0) {
-                    Text("Rival: \(Rival)")
-                    //                    Text("Long Press Times: \(Fuck)")
-                }
-            }
-            .border(Color.black, width: 0)  
-            .edgesIgnoringSafeArea(.all)
-            .gesture(
-                TapGesture(count: 2).onEnded {
-                    print("DOUBLE TAP")
-                    Rival -= 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-                }.exclusively(before: TapGesture(count: 1).onEnded {
-                    print("SINGLE TAP")
-                    Rival += 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+            GeometryReader{g in
+                ZStack {
                     
-                })
-            )
-            
-            //            Divider()
-            //                .gridCellUnsizedAxes(.horizontal)
-            
-            ZStack {
-                Color.pink.edgesIgnoringSafeArea(.all)
-                VStack(spacing: 0) {
-                    Text("You: \(You)")
-                    //                    Image(systemName: "globe")
+                    Color.cyan
+                    VStack(spacing: 0) {
+                        Text("Rival: \(Rival)")
+                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
+                        //                    Text("Long Press Times: \(Fuck)")
+                    }
                 }
+                            }
+                .border(Color.black, width: 0)
+                .edgesIgnoringSafeArea(.all)
+                .gesture(
+                    TapGesture(count: 2).onEnded {
+                        print("DOUBLE TAP")
+                        Rival -= 1
+                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                    }.exclusively(before: TapGesture(count: 1).onEnded {
+                        print("SINGLE TAP")
+                        Rival += 1
+                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+                        
+                    })
+                )
+                
+                //            Divider()
+                //                .gridCellUnsizedAxes(.horizontal)
+            GeometryReader{g in
+                ZStack {
+                    Color.pink.edgesIgnoringSafeArea(.all)
+                    VStack(spacing: 0) {
+                        Text("You: \(You)")
+                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.48: g.size.height * 0.48))
+                    }
+                }}
+                .border(Color.black, width: 0)
+                .edgesIgnoringSafeArea(.all)
+                .gesture(
+                    TapGesture(count: 2).onEnded {
+                        print("DOUBLE TAP")
+                        You -= 1
+                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                    }.exclusively(before: TapGesture(count: 1).onEnded {
+                        print("SINGLE TAP")
+                        You += 1
+                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+                    })
+                )
             }
-            .border(Color.black, width: 0)
-            .edgesIgnoringSafeArea(.all)
-            .gesture(
-                TapGesture(count: 2).onEnded {
-                    print("DOUBLE TAP")
-                    You -= 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-                }.exclusively(before: TapGesture(count: 1).onEnded {
-                    print("SINGLE TAP")
-                    You += 1
-                    WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
-                })
-            )
-        }
         .gesture(longPress)
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
