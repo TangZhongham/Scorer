@@ -33,6 +33,10 @@
 		118220BD2A17A918000B1BF0 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220BC2A17A918000B1BF0 /* Workout.swift */; };
 		118220BF2A17AA70000B1BF0 /* WorkoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220BE2A17AA70000B1BF0 /* WorkoutType.swift */; };
 		118220C12A17ABA1000B1BF0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C02A17ABA1000B1BF0 /* Game.swift */; };
+		118220C32A17C714000B1BF0 /* WorkouttCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C22A17C714000B1BF0 /* WorkouttCellView.swift */; };
+		118220C52A18AB5D000B1BF0 /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C42A18AB5D000B1BF0 /* ScoreBoardView.swift */; };
+		118220C72A18C042000B1BF0 /* RotateTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C62A18C041000B1BF0 /* RotateTestView.swift */; };
+		118220C92A18C3B8000B1BF0 /* RotateScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C82A18C3B8000B1BF0 /* RotateScoreBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,10 @@
 		118220BC2A17A918000B1BF0 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		118220BE2A17AA70000B1BF0 /* WorkoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutType.swift; sourceTree = "<group>"; };
 		118220C02A17ABA1000B1BF0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		118220C22A17C714000B1BF0 /* WorkouttCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkouttCellView.swift; sourceTree = "<group>"; };
+		118220C42A18AB5D000B1BF0 /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
+		118220C62A18C041000B1BF0 /* RotateTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateTestView.swift; sourceTree = "<group>"; };
+		118220C82A18C3B8000B1BF0 /* RotateScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateScoreBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,10 +187,13 @@
 				111308DF2A15D88200711276 /* StartSportLink.swift */,
 				111308DD2A15BF6200711276 /* SportStartView.swift */,
 				111308E12A15DD2800711276 /* BadmintonView.swift */,
+				118220C42A18AB5D000B1BF0 /* ScoreBoardView.swift */,
+				118220C82A18C3B8000B1BF0 /* RotateScoreBoardView.swift */,
 				118220B32A1737D5000B1BF0 /* BadmintonPauseView.swift */,
 				118220B52A173960000B1BF0 /* TimerView.swift */,
 				111308D92A15BCCF00711276 /* TrainingChart.swift */,
 				118220AF2A172371000B1BF0 /* WorkoutCellView.swift */,
+				118220C22A17C714000B1BF0 /* WorkouttCellView.swift */,
 				118220B12A1724E8000B1BF0 /* WorkoutView.swift */,
 			);
 			path = Views;
@@ -205,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				118220AB2A170386000B1BF0 /* HapticTestView.swift */,
+				118220C62A18C041000B1BF0 /* RotateTestView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -329,6 +341,7 @@
 			files = (
 				118220B62A173960000B1BF0 /* TimerView.swift in Sources */,
 				118220B42A1737D5000B1BF0 /* BadmintonPauseView.swift in Sources */,
+				118220C52A18AB5D000B1BF0 /* ScoreBoardView.swift in Sources */,
 				111308DE2A15BF6200711276 /* SportStartView.swift in Sources */,
 				118220B22A1724E8000B1BF0 /* WorkoutView.swift in Sources */,
 				111308DA2A15BCCF00711276 /* TrainingChart.swift in Sources */,
@@ -338,12 +351,15 @@
 				111308DC2A15BCE800711276 /* SportsList.swift in Sources */,
 				118220B02A172371000B1BF0 /* WorkoutCellView.swift in Sources */,
 				118220AE2A17233A000B1BF0 /* WorkoutModel.swift in Sources */,
+				118220C32A17C714000B1BF0 /* WorkouttCellView.swift in Sources */,
 				118220B82A174794000B1BF0 /* AppState.swift in Sources */,
 				111308E22A15DD2800711276 /* BadmintonView.swift in Sources */,
+				118220C92A18C3B8000B1BF0 /* RotateScoreBoardView.swift in Sources */,
 				118220AC2A170386000B1BF0 /* HapticTestView.swift in Sources */,
 				118220C12A17ABA1000B1BF0 /* Game.swift in Sources */,
 				111308E02A15D88200711276 /* StartSportLink.swift in Sources */,
 				111308C22A150E2300711276 /* ScorerApp.swift in Sources */,
+				118220C72A18C042000B1BF0 /* RotateTestView.swift in Sources */,
 				118220BD2A17A918000B1BF0 /* Workout.swift in Sources */,
 				118220BB2A17A699000B1BF0 /* WorkoutStateModel.swift in Sources */,
 			);

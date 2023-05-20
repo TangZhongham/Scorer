@@ -21,6 +21,7 @@ iOS 上的 user setting 页面可以用 UserDefaults 的字典去persist  ：htt
 
 persisit data 参考：https://developer.apple.com/tutorials/app-dev-training/persisting-data
 
+rotation 发现使用 ignoresafearea 的情况下rotate 后塞不满屏幕，文字位置肯定也不对，笨方法就是直接重写一个其他方向版本的View咯。
 
 ## 开发记录
 
@@ -92,6 +93,10 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 
 0519 碰见的bug 可能是目前还是通过 struct 去构造，后期改成 observableobject 可能就OK了。
 
+0520 没管bug，先把核心功能写了出来。
+
+✅ 完成timer，写死的记分，记局功能。
+✅ 完成两个方向的rotation 功能
 
 ## BUG 记录
 

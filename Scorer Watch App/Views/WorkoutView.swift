@@ -28,13 +28,26 @@ struct WorkoutView: View {
     
     var body: some View {
         List {
+            NavigationLink(destination: ScoreBoardView(workout: badminton).environmentObject(appState)
+                .transition(.asymmetric(insertion: .opacity, removal: .scale))
+                           , isActive: $appState.moveToRoot) {
+                WorkoutCellView(workout: badminton).environmentObject(appState)
+            }
+            
+            NavigationLink(destination: RotateScoreBoardView(workout: badminton).environmentObject(appState)
+                .transition(.asymmetric(insertion: .opacity, removal: .scale))
+                           , isActive: $appState.moveToRoot) {
+                WorkoutCellView(workout: badminton).environmentObject(appState)
+            }
+            
             // 发现用observable object 选择也有 NavigationLink 的bug，先不管了，开发功能要紧
             ForEach(workoutStateModel.workouts) { workout in
                 NavigationLink(destination: Text("Still developing \(workout.name)...")
                     .transition(.asymmetric(insertion: .opacity, removal: .scale))
                                , isActive: $appState.moveToRoot) {
-                    Text("New \(workout.name)")
-                    Image(systemName: workout.symbolName)
+//                    Text("New \(workout.name)")
+//                    Image(systemName: workout.symbolName)
+                    WorkouttCellView(workout: workout)
                 }
             }
             
