@@ -28,6 +28,8 @@ struct ScoreBoardView: View {
     // 添加总分，谁先达到11分，局数+1
     @State var points = 3
     
+    @State var action: () -> Void
+    
     var longPress: some Gesture {
         LongPressGesture(minimumDuration: 0.7)
             .updating($isDetectingLongPress) { currentState, gestureState,
@@ -48,76 +50,141 @@ struct ScoreBoardView: View {
     @State var timeElapsed: Int = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @State var isRotate: Bool = true
     
     var body: some View {
         
-        // 加在这也不行，有一定几率即使不满足条件也会走进去 "Waiting for dev..."
-        // 最怕就是只有模拟器是这样。。。
-        //        if(workout.name != "简单计分板") {
-        //            Text("Waiting for dev...")
-        //        } else {
-        
         ZStack {
-            
-            VStack(alignment: .center, spacing: 0) {
-                GeometryReader{g in
-                    ZStack {
-                        Color.cyan
-                        VStack(spacing: 0) {
-                            Text("\(Rival)")
-                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+            if isRotate {
+                // 暂时把 RotateScoreBoardView 的View 部分拷贝过来做判断，到时候设成可配置化
+                HStack(alignment: .center, spacing: 0) {
+                    GeometryReader{g in
+                        ZStack {
+                            Color.cyan
+                            VStack(spacing: 0) {
+                                Text("\(Rival)")
+                                    .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+                            }
+                            Text("\(rivalScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: 30, y: -60)
                         }
-                        Text("\(rivalScore)")
-                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
-                            .offset(x: -70, y: 35)
                     }
+                    .border(Color.black, width: 0)
+                    .edgesIgnoringSafeArea(.all)
+                    .gesture(
+                        TapGesture(count: 2).onEnded {
+                            print("DOUBLE TAP")
+                            Rival -= 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                        }.exclusively(before: TapGesture(count: 1).onEnded {
+                            print("SINGLE TAP")
+                            Rival += 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+                            
+                        })
+                    )
+                    
+                    GeometryReader{g in
+                        ZStack {
+                            Color.pink.edgesIgnoringSafeArea(.all)
+                            VStack(spacing: 0) {
+                                Text("\(workout.name)")
+                                Text("\(You)")
+                                    .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+                            }
+                            Text("\(homeScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: -30, y: -60)
+                        }}
+                    .border(Color.black, width: 0)
+                    .edgesIgnoringSafeArea(.all)
+                    .gesture(
+                        TapGesture(count: 2).onEnded {
+                            print("DOUBLE TAP")
+                            You -= 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                        }.exclusively(before: TapGesture(count: 1).onEnded {
+                            print("SINGLE TAP")
+                            You += 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+                        })
+                    )
                 }
-                .border(Color.black, width: 0)
-                .edgesIgnoringSafeArea(.all)
-                .gesture(
-                    TapGesture(count: 2).onEnded {
-                        print("DOUBLE TAP")
-                        Rival -= 1
-                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-                    }.exclusively(before: TapGesture(count: 1).onEnded {
-                        print("SINGLE TAP")
-                        Rival += 1
-                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
-                        
-                    })
-                )
+                Text("(\(matches))").offset(x:0, y:-35)
                 
-                GeometryReader{g in
-                    ZStack {
-                        Color.pink
-                        VStack(spacing: 0) {
-                            Text("\(You)")
-                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+                VStack {
+                    Text(" \(timeElapsed) sec")
+                        .onReceive(timer) { firedDate in
+                            print("timer fired")
+                            timeElapsed = Int(firedDate.timeIntervalSince(startDate))
                         }
-                        Text("\(homeScore)")
-                            .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
-                            .offset(x: -70, y: -35)
-                    }}
-                .border(Color.black, width: 0)
-                .edgesIgnoringSafeArea(.all)
-                .gesture(
-                    TapGesture(count: 2).onEnded {
-                        print("DOUBLE TAP")
-                        You -= 1
-                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
-                    }.exclusively(before: TapGesture(count: 1).onEnded {
-                        print("SINGLE TAP")
-                        You += 1
-                        WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
-                    })
-                )
-            }
+                    //                            Button("Stop") {
+                    //                                timer.upstream.connect().cancel()
+                    //                            }
+                }.offset(x: -50, y: -89)
+            } else
+            {
+                VStack(alignment: .center, spacing: 0) {
+                    GeometryReader{g in
+                        ZStack {
+                            Color.cyan
+                            VStack(spacing: 0) {
+                                Text("\(workout.name)")
+                                Text("\(Rival)")
+                                    .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+                            }
+                            Text("\(rivalScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: -70, y: 35)
+                        }
+                    }
+                    .border(Color.black, width: 0)
+                    .edgesIgnoringSafeArea(.all)
+                    .gesture(
+                        TapGesture(count: 2).onEnded {
+                            print("DOUBLE TAP")
+                            Rival -= 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                        }.exclusively(before: TapGesture(count: 1).onEnded {
+                            print("SINGLE TAP")
+                            Rival += 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+                            
+                        })
+                    )
+                    
+                    GeometryReader{g in
+                        ZStack {
+                            Color.pink
+                            VStack(spacing: 0) {
+                                Text("\(You)")
+                                    .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
+                            }
+                            Text("\(homeScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: -70, y: -35)
+                        }}
+                    .border(Color.black, width: 0)
+                    .edgesIgnoringSafeArea(.all)
+                    .gesture(
+                        TapGesture(count: 2).onEnded {
+                            print("DOUBLE TAP")
+                            You -= 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+                        }.exclusively(before: TapGesture(count: 1).onEnded {
+                            print("SINGLE TAP")
+                            You += 1
+                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+                        })
+                    )
+                }
             // ✅ 初版大比分位置
-//            ZStack(alignment: .trailing) {
-//                Text("\(homeScore):\(rivalScore)")
-//                    .font(.largeTitle)
-//                Text("(\(matches))").offset(x:30, y:0)
-//            }
+            //            ZStack(alignment: .trailing) {
+            //                Text("\(homeScore):\(rivalScore)")
+            //                    .font(.largeTitle)
+            //                Text("(\(matches))").offset(x:30, y:0)
+            //            }
             
             Text("(\(matches))").offset(x:-40, y:0)
             VStack {
@@ -130,6 +197,8 @@ struct ScoreBoardView: View {
                 //                                timer.upstream.connect().cancel()
                 //                            }
             }.offset(x: -50, y: -89)
+            
+        }
         }
         .gesture(longPress)
         .edgesIgnoringSafeArea(.all)
@@ -177,7 +246,7 @@ struct ScoreBoardView: View {
             }
         })
         .sheet(isPresented: $completedLongPress) {
-            BadmintonPauseView().environmentObject(appState).transition(.scale)
+            NewBadmintonPauseView(action: action).environmentObject(appState).transition(.scale)
         }
         
     }
@@ -198,6 +267,6 @@ struct ScoreBoardView_Previews: PreviewProvider {
     static let workout = Workout(name: "简单计分板", symbolName: "face.smiling")
     
     static var previews: some View {
-        ScoreBoardView(workout: workout)
+        ScoreBoardView(workout: workout, action: {})
     }
 }

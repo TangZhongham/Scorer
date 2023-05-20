@@ -11,10 +11,10 @@ struct WorkoutView: View {
     
     let workouts = [
         Workout(name: "简单计分板", symbolName: "face.smiling"),
-        Workout(name: "Badminton Battle", symbolName: "person.2"),
-        Workout(name: "Simple Compete", symbolName: "figure.walk"),
-        Workout(name: "Simple Single", symbolName: "bicycle"),
-        Workout(name: "Outdoor Bike", symbolName: "bicycle"),
+        Workout(name: "5局3胜，11分制", symbolName: "person.2"),
+        Workout(name: "7局4胜，21分制", symbolName: "person.and.arrow.left.and.arrow.right"),
+        Workout(name: "3局2胜，11分制", symbolName: "bicycle"),
+        Workout(name: "99局50胜，99分制", symbolName: "gamecontroller.fill"),
     ]
     
     let badminton = Workout(name: "羽毛球", symbolName: "gamecontroller.fill")
@@ -26,59 +26,41 @@ struct WorkoutView: View {
     @EnvironmentObject var workoutStateModel: WorkoutStateModel
     @State var isActive : Bool = false
     
+    @State var tagToShow: String?
+    
     var body: some View {
         List {
-            NavigationLink(destination: ScoreBoardView(workout: badminton).environmentObject(appState)
-                .transition(.asymmetric(insertion: .opacity, removal: .scale))
-                           , isActive: $appState.moveToRoot) {
-                WorkoutCellView(workout: badminton).environmentObject(appState)
-            }
+//            NavigationLink(destination: RotateScoreBoardView(workout: badminton).environmentObject(appState)
+//                .transition(.asymmetric(insertion: .opacity, removal: .scale))
+//                           , isActive: $appState.moveToRoot) {
+//                WorkoutCellView(workout: badminton).environmentObject(appState)
+//            }
+
+//            // 发现用observable object 选择也有 NavigationLink 的bug，先不管了，开发功能要紧
+//            ForEach(workoutStateModel.workouts) { workout in
+//                NavigationLink(destination: Text("Still developing \(workout.name)...")
+//                    .transition(.asymmetric(insertion: .opacity, removal: .scale))
+//                               , isActive: $appState.moveToRoot) {
+////                    Text("New \(workout.name)")
+////                    Image(systemName: workout.symbolName)
+//                    WorkouttCellView(workout: workout)
+//                }
+//            }
+//
             
-            NavigationLink(destination: RotateScoreBoardView(workout: badminton).environmentObject(appState)
-                .transition(.asymmetric(insertion: .opacity, removal: .scale))
-                           , isActive: $appState.moveToRoot) {
-                WorkoutCellView(workout: badminton).environmentObject(appState)
-            }
-            
-            // 发现用observable object 选择也有 NavigationLink 的bug，先不管了，开发功能要紧
-            ForEach(workoutStateModel.workouts) { workout in
-                NavigationLink(destination: Text("Still developing \(workout.name)...")
-                    .transition(.asymmetric(insertion: .opacity, removal: .scale))
-                               , isActive: $appState.moveToRoot) {
-//                    Text("New \(workout.name)")
-//                    Image(systemName: workout.symbolName)
-                    WorkouttCellView(workout: workout)
-                }
-            }
-            
-            NavigationLink(destination: Text("Still developing 羽毛球...")
-                .transition(.asymmetric(insertion: .opacity, removal: .scale))
-                           , isActive: $appState.moveToRoot) {
-                WorkoutCellView(workout: badminton).environmentObject(appState)
-            }
-            
-            
-            NavigationLink(destination: Text("Still developing 乒乓球...")
-                .transition(.asymmetric(insertion: .opacity, removal: .scale))
-                           , isActive: $appState.moveToRoot) {
-                WorkoutCellView(workout: tabletennis).environmentObject(appState)
-            }
-            
-            
+            // ✅ 完美解决所谓的 bug
             ForEach(workouts) { workout in
-                //                WorkoutCellView(workout: workout)
-                // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
-                NavigationLink(destination: BadmintonView(workout: workout).environmentObject(appState)
+                NavigationLink(destination: ScoreBoardView(workout: workout, action: {
+                    self.tagToShow = nil}).environmentObject(appState)
                     .transition(.asymmetric(insertion: .opacity, removal: .scale))
                                
                                //                    .transition(.opacity)
                                //                    .animation(.easeIn)
-                               , isActive: $appState.moveToRoot) {
+                               , tag: workout.id, selection: $tagToShow) {
                     WorkoutCellView(workout: workout).environmentObject(appState)
                 }
-                
-                
             }
+            
             // TODO: ❎ 暂时不需要add 功能，如果需要修改五局三胜等，直接项目里面记住上回修改。
             Button {
                 // showDetail = true
@@ -95,26 +77,6 @@ struct WorkoutView: View {
         .navigationBarTitle("Scorer")
         .listStyle(.carousel)
         
-        
-        //        TabView {
-        //            List {
-        //                ForEach(workouts) { workout in
-        //                    //                WorkoutCellView(workout: workout)
-        //                    // 这里可以通过 destination 传 workout 给下层view 做一个switch 判断给到哪个view。
-        //                    NavigationLink(destination: BadmintonView()) {
-        //                        WorkoutCellView(workout: workout)
-        //                    }
-        //
-        //                }
-        //            }
-        //            .navigationBarTitle("Scorer")
-        //            .listStyle(.carousel)
-        //            .tag(0)
-        //
-        //            TrainingChart()
-        //                .tag(1)
-        //        }
-        //        .tabViewStyle(.page)
     }
 }
 

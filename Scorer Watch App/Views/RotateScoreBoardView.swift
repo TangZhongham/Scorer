@@ -51,12 +51,6 @@ struct RotateScoreBoardView: View {
     
     var body: some View {
         
-        // 加在这也不行，有一定几率即使不满足条件也会走进去 "Waiting for dev..."
-        // 最怕就是只有模拟器是这样。。。
-//        if(workout.name != "简单计分板") {
-//            Text("Waiting for dev...")
-//        } else {
-        
         ZStack {
             
             HStack(alignment: .center, spacing: 0) {
@@ -113,13 +107,6 @@ struct RotateScoreBoardView: View {
                     )
                 }
             Text("(\(matches))").offset(x:0, y:-35)
-            
-            // ✅ 初版大比分记牌
-//            HStack {
-//                    Text("\(rivalScore):\(homeScore)")
-//                        .font(.largeTitle).padding(.trailing)
-//                    Text("(\(matches))")
-//            }.offset(x:0, y:60)
             
             VStack {
                 Text(" \(timeElapsed) sec")

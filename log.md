@@ -99,21 +99,28 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 
 ✅ 完成timer，写死的记分，记局功能。
 ✅ 完成两个方向的rotation 功能
+✅ 完成之前首页的bug～不是bug，是自己写呲了～
 
-0521 调研 手表和iphone 之间数据同步怎么玩。调研画图，可以先放在iOS。 调研内购（画图，创建player 玩家）
+0521 调研 手表和iphone 之间数据同步怎么玩。调研画图，可以先放在iOS。 调研内购（画图，创建player 玩家），结合首页作成可配置化可添加、删除化。
 
 ## BUG 记录
 
-0519 发现一个 swiftui 的bug，具体是希望用 foreach + if 判断一下 a.name == "b" 的情况，会出现实际绑定无法预知的情形。暂时绕过
+~~0519 发现一个 swiftui 的bug，具体是希望用 foreach + if 判断一下 a.name == "b" 的情况，会出现实际绑定无法预知的情形。暂时绕过~~
 
-0520 发现绑定了 observableobject 的版本也有bug。
+~~0520 发现绑定了 observableobject 的版本也有bug。~~
 
-有可能1 workout 没有UUID？
+~~有可能1 workout 没有UUID？
 2. 参考这个人好像碰见一样的问题，发现确实和 isActive 有关：https://www.hackingwithswift.com/forums/swiftui/navigationlink-in-list-pushes-the-wrong-row/5213
 
 isactive 是为了pop to rootview 实现的，有空试试这种方式 pop：~~\https://www.hackingwithswift.com/forums/swiftui/pop-to-parent-view-via-bar-button/1295\~~
 
 要么先不玩pop to root view
+
+✅ ps: 这个bug 是参考这个链接引入的，可能作者只用了一个view （实在不行我也可以只实现一层，就是单个记分器，只不过可以不断修改，也是一种方案。
+
+✅ 发现我的问题是 isActive 的变量 多个view 都用了，造成了混乱。https://app-o-mat.com/article/watchkit/programmatic-navigationlink-swiftui-apple-watch
+
+✅ 不是bug，自己写错了，通过以上链接里的方法传一个 () -> void 给子view render 的同时执行，解决了这个问题。
 
 ```swift
             ForEach(workouts) { workout in
