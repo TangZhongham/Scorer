@@ -20,7 +20,7 @@ struct RotateScoreBoardView: View {
     @State var workout: Workout
     
     // 添加局数
-    @State var matches = 5
+    @State var matches = 11
     @State var startMatches = 0
     @State var homeScore = 0
     @State var rivalScore = 0
@@ -67,6 +67,9 @@ struct RotateScoreBoardView: View {
                                 Text("\(Rival)")
                                     .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
                             }
+                            Text("\(rivalScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: 30, y: -60)
                         }
                     }
                     .border(Color.black, width: 0)
@@ -91,6 +94,9 @@ struct RotateScoreBoardView: View {
                                 Text("\(You)")
                                     .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
                             }
+                            Text("\(homeScore)")
+                                .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.35: g.size.height * 0.35))
+                                .offset(x: -30, y: -60)
                         }}
                     .border(Color.black, width: 0)
                     .edgesIgnoringSafeArea(.all)
@@ -106,11 +112,14 @@ struct RotateScoreBoardView: View {
                         })
                     )
                 }
-            HStack {
-                    Text("\(rivalScore):\(homeScore)")
-                        .font(.largeTitle).padding(.trailing)
-                    Text("(\(matches))")
-            }.offset(x:0, y:60)
+            Text("(\(matches))").offset(x:0, y:-35)
+            
+            // ✅ 初版大比分记牌
+//            HStack {
+//                    Text("\(rivalScore):\(homeScore)")
+//                        .font(.largeTitle).padding(.trailing)
+//                    Text("(\(matches))")
+//            }.offset(x:0, y:60)
             
             VStack {
                 Text(" \(timeElapsed) sec")
