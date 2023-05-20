@@ -98,6 +98,8 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 ✅ 完成timer，写死的记分，记局功能。
 ✅ 完成两个方向的rotation 功能
 
+0521 调研 手表和iphone 之间数据同步怎么玩。调研画图，可以先放在iOS。 调研内购（画图，创建player 玩家）
+
 ## BUG 记录
 
 0519 发现一个 swiftui 的bug，具体是希望用 foreach + if 判断一下 a.name == "b" 的情况，会出现实际绑定无法预知的情形。暂时绕过
