@@ -23,6 +23,8 @@ persisit data 参考：https://developer.apple.com/tutorials/app-dev-training/pe
 
 rotation 发现使用 ignoresafearea 的情况下rotate 后塞不满屏幕，文字位置肯定也不对，笨方法就是直接重写一个其他方向版本的View咯。
 
+wwdc 做一个workout app 涉及 healthkit：https://developer.apple.com/videos/play/wwdc2021/10009/。https://app-o-mat.com/article-series/watchkit-workout-apps
+
 ## 开发记录
 
 Haptic: 
@@ -103,6 +105,15 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 ## BUG 记录
 
 0519 发现一个 swiftui 的bug，具体是希望用 foreach + if 判断一下 a.name == "b" 的情况，会出现实际绑定无法预知的情形。暂时绕过
+
+0520 发现绑定了 observableobject 的版本也有bug。
+
+有可能1 workout 没有UUID？
+2. 参考这个人好像碰见一样的问题，发现确实和 isActive 有关：https://www.hackingwithswift.com/forums/swiftui/navigationlink-in-list-pushes-the-wrong-row/5213
+
+isactive 是为了pop to rootview 实现的，有空试试这种方式 pop：~~\https://www.hackingwithswift.com/forums/swiftui/pop-to-parent-view-via-bar-button/1295\~~
+
+要么先不玩pop to root view
 
 ```swift
             ForEach(workouts) { workout in
