@@ -1,22 +1,19 @@
 //
-//  ScoreBoardView.swift
-//  Scorer Watch App
+//  ScoreBoardPhoneView.swift
+//  Scorer
 //
-//  Created by 唐某某 on 2023/5/20.
+//  Created by 唐某某 on 2023/5/21.
 //
 
 import SwiftUI
-import WatchKit
 
-struct ScoreBoardView: View {
+struct ScoreBoardPhoneView: View {
     @State var You = 0
     @State var Rival = 0
     
     @GestureState private var isDetectingLongPress = false
     @State var completedLongPress = false
     
-    @EnvironmentObject var appState : AppState
-    @State var workout: Workout
     
     // 添加局数
     // TODO ❎ 局数可以设置成最大99，超过了页面布局就不好看了
@@ -40,7 +37,7 @@ struct ScoreBoardView: View {
             .onEnded { finished in
                 print("LOOOOONG TAP")
                 // click
-                WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
+//                WKInterfaceDevice.current().play(WKHapticType(rawValue: 8)!)
                 completedLongPress = finished
             }
     }
@@ -53,7 +50,6 @@ struct ScoreBoardView: View {
     @State var isRotate: Bool = true
     
     var body: some View {
-        
         ZStack {
             if isRotate {
                 // 暂时把 RotateScoreBoardView 的View 部分拷贝过来做判断，到时候设成可配置化
@@ -76,11 +72,11 @@ struct ScoreBoardView: View {
                         TapGesture(count: 2).onEnded {
                             print("DOUBLE TAP")
                             Rival -= 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                         }.exclusively(before: TapGesture(count: 1).onEnded {
                             print("SINGLE TAP")
                             Rival += 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
                             
                         })
                     )
@@ -89,7 +85,6 @@ struct ScoreBoardView: View {
                         ZStack {
                             Color.pink.edgesIgnoringSafeArea(.all)
                             VStack(spacing: 0) {
-                                Text("\(workout.name)")
                                 Text("\(You)")
                                     .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
                             }
@@ -103,11 +98,11 @@ struct ScoreBoardView: View {
                         TapGesture(count: 2).onEnded {
                             print("DOUBLE TAP")
                             You -= 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                         }.exclusively(before: TapGesture(count: 1).onEnded {
                             print("SINGLE TAP")
                             You += 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                         })
                     )
                 }
@@ -130,7 +125,6 @@ struct ScoreBoardView: View {
                         ZStack {
                             Color.cyan
                             VStack(spacing: 0) {
-                                Text("\(workout.name)")
                                 Text("\(Rival)")
                                     .font(.system(size: g.size.height > g.size.width ? g.size.width * 0.7: g.size.height * 0.7))
                             }
@@ -145,11 +139,11 @@ struct ScoreBoardView: View {
                         TapGesture(count: 2).onEnded {
                             print("DOUBLE TAP")
                             Rival -= 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                         }.exclusively(before: TapGesture(count: 1).onEnded {
                             print("SINGLE TAP")
                             Rival += 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 1)!)
                             
                         })
                     )
@@ -171,20 +165,14 @@ struct ScoreBoardView: View {
                         TapGesture(count: 2).onEnded {
                             print("DOUBLE TAP")
                             You -= 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 4)!)
                         }.exclusively(before: TapGesture(count: 1).onEnded {
                             print("SINGLE TAP")
                             You += 1
-                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
+//                            WKInterfaceDevice.current().play(WKHapticType(rawValue: 3)!)
                         })
                     )
                 }
-            // ✅ 初版大比分位置
-            //            ZStack(alignment: .trailing) {
-            //                Text("\(homeScore):\(rivalScore)")
-            //                    .font(.largeTitle)
-            //                Text("(\(matches))").offset(x:30, y:0)
-            //            }
             
             Text("(\(matches))").offset(x:-40, y:0)
             VStack {
@@ -245,10 +233,9 @@ struct ScoreBoardView: View {
                 You = 0
             }
         })
-        .sheet(isPresented: $completedLongPress) {
-            NewBadmintonPauseView(action: action).environmentObject(appState).transition(.scale)
-        }
-        
+//        .sheet(isPresented: $completedLongPress) {
+//            NewBadmintonPauseView(action: action).environmentObject(appState).transition(.scale)
+//        }
     }
     
     func calculateValue(_ input: Int) -> Int {
@@ -260,23 +247,10 @@ struct ScoreBoardView: View {
             return input / 2 + 1 // 返回商+1
         }
     }
-    
 }
 
-struct ScoreBoardView_Previews: PreviewProvider {
-    static let workout = Workout(name: "简单计分板", symbolName: "face.smiling")
-    
+struct ScoreBoardPhoneView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreBoardView(workout: workout, action: {})
-            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
-                            .previewDisplayName("40 mm")
-        
-        ScoreBoardView(workout: workout, action: {})
-                        .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 44mm"))
-                        .previewDisplayName("44 mm")
-        ScoreBoardView(workout: workout, action: {})
-                            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 7 - 45mm"))
-                                            .previewDisplayName("45 mm")
-        
+        ScoreBoardPhoneView(action: {})
     }
 }

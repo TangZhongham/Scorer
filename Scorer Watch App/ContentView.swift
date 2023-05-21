@@ -24,7 +24,8 @@ struct ContentView: View {
 //    }
     
     var body: some View {
-        WorkoutView()
+//        WorkoutView()
+        TestContentView()
     }
 }
 

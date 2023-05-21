@@ -103,6 +103,16 @@ https://developer.apple.com/documentation/swiftui/longpressgesture
 
 0521 调研 手表和iphone 之间数据同步怎么玩。调研画图，可以先放在iOS。 调研内购（画图，创建player 玩家），结合首页作成可配置化可添加、删除化。
 
+An independent watchOS app can use Watch Connectivity to transfer information from its companion iOS app when the iOS device is available. However, the independent watchOS app can’t use Watch Connectivity as its main source of data, so it needs to be capable of accessing information on its own.
+https://developer.apple.com/documentation/watchconnectivity
+
+✅ 参考这篇文章的demo 成功了：https://cgaaf.medium.com/swiftui-watch-connectivity-in-4-steps-594f90f3a0bc
+
+先搞一个最简app，就是 iphone，watch 两边的可以同时操作，先砍掉其他页面。watch 两个页面，记分器，设置；iphone 两个页面，记分器，设置。
+
+明天or今晚把后台写死的换成observableobject 给两边用
+
+
 ## BUG 记录
 
 ~~0519 发现一个 swiftui 的bug，具体是希望用 foreach + if 判断一下 a.name == "b" 的情况，会出现实际绑定无法预知的情形。暂时绕过~~

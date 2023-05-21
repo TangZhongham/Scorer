@@ -39,6 +39,12 @@
 		118220C92A18C3B8000B1BF0 /* RotateScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118220C82A18C3B8000B1BF0 /* RotateScoreBoardView.swift */; };
 		1193C3C72A190EA10068BC9B /* NewBadmintonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3C62A190EA10068BC9B /* NewBadmintonView.swift */; };
 		1193C3C92A1910130068BC9B /* NewBadmintonPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3C82A1910130068BC9B /* NewBadmintonPauseView.swift */; };
+		1193C3CC2A19FC270068BC9B /* SessionDelegater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3CB2A19FC260068BC9B /* SessionDelegater.swift */; };
+		1193C3CD2A19FC270068BC9B /* SessionDelegater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3CB2A19FC260068BC9B /* SessionDelegater.swift */; };
+		1193C3CF2A19FCB90068BC9B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3CE2A19FCB90068BC9B /* Counter.swift */; };
+		1193C3D02A19FCB90068BC9B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3CE2A19FCB90068BC9B /* Counter.swift */; };
+		1193C3D22A19FD460068BC9B /* TestContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D12A19FD460068BC9B /* TestContentView.swift */; };
+		1193C3D42A1A03360068BC9B /* ScoreBoardPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D32A1A03360068BC9B /* ScoreBoardPhoneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +107,10 @@
 		118220C82A18C3B8000B1BF0 /* RotateScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateScoreBoardView.swift; sourceTree = "<group>"; };
 		1193C3C62A190EA10068BC9B /* NewBadmintonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBadmintonView.swift; sourceTree = "<group>"; };
 		1193C3C82A1910130068BC9B /* NewBadmintonPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBadmintonPauseView.swift; sourceTree = "<group>"; };
+		1193C3CB2A19FC260068BC9B /* SessionDelegater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegater.swift; sourceTree = "<group>"; };
+		1193C3CE2A19FCB90068BC9B /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		1193C3D12A19FD460068BC9B /* TestContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContentView.swift; sourceTree = "<group>"; };
+		1193C3D32A1A03360068BC9B /* ScoreBoardPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardPhoneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +136,7 @@
 			children = (
 				111308D32A150EF200711276 /* README.md */,
 				111308D42A150F0D00711276 /* log.md */,
+				1193C3CA2A19FBE70068BC9B /* Shared */,
 				111308AE2A150E1F00711276 /* Scorer */,
 				111308C02A150E2300711276 /* Scorer Watch App */,
 				111308AD2A150E1F00711276 /* Products */,
@@ -146,6 +157,7 @@
 			children = (
 				111308AF2A150E1F00711276 /* ScorerApp.swift */,
 				111308B12A150E1F00711276 /* ContentView.swift */,
+				1193C3D32A1A03360068BC9B /* ScoreBoardPhoneView.swift */,
 				111308B32A150E2200711276 /* Assets.xcassets */,
 				111308B52A150E2200711276 /* Preview Content */,
 			);
@@ -166,6 +178,7 @@
 				118220AA2A17036C000B1BF0 /* TestViews */,
 				111308C12A150E2300711276 /* ScorerApp.swift */,
 				111308C32A150E2300711276 /* ContentView.swift */,
+				1193C3D12A19FD460068BC9B /* TestContentView.swift */,
 				111308D62A15126000711276 /* Models */,
 				111308D52A15125400711276 /* Views */,
 				111308C52A150E2400711276 /* Assets.xcassets */,
@@ -232,6 +245,15 @@
 			children = (
 			);
 			path = Badminton;
+			sourceTree = "<group>";
+		};
+		1193C3CA2A19FBE70068BC9B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1193C3CB2A19FC260068BC9B /* SessionDelegater.swift */,
+				1193C3CE2A19FCB90068BC9B /* Counter.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1193C3D42A1A03360068BC9B /* ScoreBoardPhoneView.swift in Sources */,
+				1193C3CF2A19FCB90068BC9B /* Counter.swift in Sources */,
+				1193C3CC2A19FC270068BC9B /* SessionDelegater.swift in Sources */,
 				111308B22A150E1F00711276 /* ContentView.swift in Sources */,
 				111308B02A150E1F00711276 /* ScorerApp.swift in Sources */,
 			);
@@ -351,6 +376,7 @@
 				111308DE2A15BF6200711276 /* SportStartView.swift in Sources */,
 				1193C3C92A1910130068BC9B /* NewBadmintonPauseView.swift in Sources */,
 				118220B22A1724E8000B1BF0 /* WorkoutView.swift in Sources */,
+				1193C3D22A19FD460068BC9B /* TestContentView.swift in Sources */,
 				111308DA2A15BCCF00711276 /* TrainingChart.swift in Sources */,
 				111308C42A150E2300711276 /* ContentView.swift in Sources */,
 				111308D82A15BA7000711276 /* SportRow.swift in Sources */,
@@ -363,10 +389,12 @@
 				111308E22A15DD2800711276 /* BadmintonView.swift in Sources */,
 				118220C92A18C3B8000B1BF0 /* RotateScoreBoardView.swift in Sources */,
 				118220AC2A170386000B1BF0 /* HapticTestView.swift in Sources */,
+				1193C3CD2A19FC270068BC9B /* SessionDelegater.swift in Sources */,
 				118220C12A17ABA1000B1BF0 /* Game.swift in Sources */,
 				1193C3C72A190EA10068BC9B /* NewBadmintonView.swift in Sources */,
 				111308E02A15D88200711276 /* StartSportLink.swift in Sources */,
 				111308C22A150E2300711276 /* ScorerApp.swift in Sources */,
+				1193C3D02A19FCB90068BC9B /* Counter.swift in Sources */,
 				118220C72A18C042000B1BF0 /* RotateTestView.swift in Sources */,
 				118220BD2A17A918000B1BF0 /* Workout.swift in Sources */,
 				118220BB2A17A699000B1BF0 /* WorkoutStateModel.swift in Sources */,

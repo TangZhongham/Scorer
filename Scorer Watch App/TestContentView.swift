@@ -1,14 +1,13 @@
 //
-//  ContentView.swift
-//  Scorer
+//  TestContentView.swift
+//  Scorer Watch App
 //
-//  Created by 唐某某 on 2023/5/17.
+//  Created by 唐某某 on 2023/5/21.
 //
-
 import SwiftUI
 import WatchConnectivity
 
-struct ContentView: View {
+struct TestContentView: View {
     @StateObject var counter = Counter()
     
     var labelStyle: some LabelStyle {
@@ -41,8 +40,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TestContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TestContentView()
     }
 }
