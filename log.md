@@ -25,6 +25,8 @@ rotation 发现使用 ignoresafearea 的情况下rotate 后塞不满屏幕，文
 
 wwdc 做一个workout app 涉及 healthkit：https://developer.apple.com/videos/play/wwdc2021/10009/。https://app-o-mat.com/article-series/watchkit-workout-apps
 
+内购是可以不用server 端验证的，可以加内购解锁 player 功能，可添加照片，记录play 次数。IAP 实现可以问问chatgpt 写例子
+
 ## 开发记录
 
 Haptic: 
