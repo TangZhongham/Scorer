@@ -117,7 +117,14 @@ https://developer.apple.com/documentation/watchconnectivity
 明天or今晚把后台写死的换成observableobject 给两边用
 
 ✅ 完成背后数据结构替换成 observableobject 。
-❎ 由于使用stack 引入 1. detail 有一个大横条，canvas 没有simulator有 2. 没写返回root view的方案。
+~~❎ 由于使用stack 引入 1. detail 有一个大横条，canvas 没有simulator有 2. 没写返回root view的方案。（Yea so it got fixed when I did .navigationBarHidden(true) and ran it in a simulator and on my apple watch, but the canvas was glitched into still showing the navigation bar. Thank you for the help! 跟我的不一样。但是真有可能是显示的bug，暂时先不管？https://www.reddit.com/r/SwiftUI/comments/k0guf4/watchos_series_5_44mm_safe_area_problem/）~~
+晚上12点半发现还是自己的锅，太sloppy了，明天记录一下整个过程。前端真的不像后端那么自由，bug太难找了。
+
+工具页布局可参考：https://stackoverflow.com/questions/60779781/swiftui-is-not-respecting-safe-area-for-apple-watch
+
+0522 
+
+✅ 解决大横条“bug” 问题
 
 ## 学习心得
 

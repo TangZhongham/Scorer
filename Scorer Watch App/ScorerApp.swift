@@ -17,12 +17,13 @@ struct Scorer_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            // 发现一直卡住的canvas 和 simulator bug 就是这个地方多了NavigationView（后面有navigationstack 了冲突了）
+//            NavigationView {
                 BoardView().environmentObject(store)
 //                ContentView()
 //                    .environmentObject(appState)
 //                    .environmentObject(workoutStateModel)
-            }
+//            }
         }
     }
 }

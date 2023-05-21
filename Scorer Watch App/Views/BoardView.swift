@@ -22,6 +22,8 @@ struct BoardView: View {
             }
 //            .navigationBarTitle("Scorer")
             .listStyle(.carousel)
+            // 发现我加了这个canvas页面很好看，但是simulator 还是不行。
+            .toolbar(.hidden)
             
         }
     }
