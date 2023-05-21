@@ -27,6 +27,8 @@ wwdc 做一个workout app 涉及 healthkit：https://developer.apple.com/videos/
 
 内购是可以不用server 端验证的，可以加内购解锁 player 功能，可添加照片，记录play 次数。IAP 实现可以问问chatgpt 写例子
 
+❎ 配色参考：https://developer.apple.com/tutorials/app-dev-training/creating-a-card-view。https://developer.apple.com/tutorials/app-dev-training/passing-data-with-bindings
+
 ## 开发记录
 
 Haptic: 
@@ -114,6 +116,13 @@ https://developer.apple.com/documentation/watchconnectivity
 
 明天or今晚把后台写死的换成observableobject 给两边用
 
+✅ 完成背后数据结构替换成 observableobject 。
+❎ 由于使用stack 引入 1. detail 有一个大横条，canvas 没有simulator有 2. 没写返回root view的方案。
+
+## 学习心得
+
+0521 原本board 类设置成struct 且非Observable Object 同时 View 里面用Binding 只提供了 展示功能，没有留 tap +1 功能。根本原因是开发还不熟悉。于是大改成了 Observable Object。
+同时 发现 Observed Object 总是要塞变量 View(model:a) 于是改成了 environmentObject 。好处是 call view 的时候只需要 View.environmentObject(xx)
 
 ## BUG 记录
 

@@ -45,6 +45,13 @@
 		1193C3D02A19FCB90068BC9B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3CE2A19FCB90068BC9B /* Counter.swift */; };
 		1193C3D22A19FD460068BC9B /* TestContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D12A19FD460068BC9B /* TestContentView.swift */; };
 		1193C3D42A1A03360068BC9B /* ScoreBoardPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D32A1A03360068BC9B /* ScoreBoardPhoneView.swift */; };
+		1193C3D62A1A44810068BC9B /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D52A1A44810068BC9B /* Board.swift */; };
+		1193C3D72A1A44810068BC9B /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D52A1A44810068BC9B /* Board.swift */; };
+		1193C3D92A1A448C0068BC9B /* BoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D82A1A448C0068BC9B /* BoardStore.swift */; };
+		1193C3DA2A1A448C0068BC9B /* BoardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3D82A1A448C0068BC9B /* BoardStore.swift */; };
+		1193C3DC2A1A4DF70068BC9B /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3DB2A1A4DF70068BC9B /* BoardView.swift */; };
+		1193C3DE2A1A52140068BC9B /* BoardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3DD2A1A52140068BC9B /* BoardCellView.swift */; };
+		1193C3E02A1A558A0068BC9B /* BoardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193C3DF2A1A558A0068BC9B /* BoardDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +118,11 @@
 		1193C3CE2A19FCB90068BC9B /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		1193C3D12A19FD460068BC9B /* TestContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContentView.swift; sourceTree = "<group>"; };
 		1193C3D32A1A03360068BC9B /* ScoreBoardPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardPhoneView.swift; sourceTree = "<group>"; };
+		1193C3D52A1A44810068BC9B /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		1193C3D82A1A448C0068BC9B /* BoardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStore.swift; sourceTree = "<group>"; };
+		1193C3DB2A1A4DF70068BC9B /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		1193C3DD2A1A52140068BC9B /* BoardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellView.swift; sourceTree = "<group>"; };
+		1193C3DF2A1A558A0068BC9B /* BoardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +226,9 @@
 				118220AF2A172371000B1BF0 /* WorkoutCellView.swift */,
 				118220C22A17C714000B1BF0 /* WorkouttCellView.swift */,
 				118220B12A1724E8000B1BF0 /* WorkoutView.swift */,
+				1193C3DB2A1A4DF70068BC9B /* BoardView.swift */,
+				1193C3DF2A1A558A0068BC9B /* BoardDetailView.swift */,
+				1193C3DD2A1A52140068BC9B /* BoardCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +267,8 @@
 			children = (
 				1193C3CB2A19FC260068BC9B /* SessionDelegater.swift */,
 				1193C3CE2A19FCB90068BC9B /* Counter.swift */,
+				1193C3D52A1A44810068BC9B /* Board.swift */,
+				1193C3D82A1A448C0068BC9B /* BoardStore.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -358,8 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1193C3D92A1A448C0068BC9B /* BoardStore.swift in Sources */,
 				1193C3D42A1A03360068BC9B /* ScoreBoardPhoneView.swift in Sources */,
 				1193C3CF2A19FCB90068BC9B /* Counter.swift in Sources */,
+				1193C3D62A1A44810068BC9B /* Board.swift in Sources */,
 				1193C3CC2A19FC270068BC9B /* SessionDelegater.swift in Sources */,
 				111308B22A150E1F00711276 /* ContentView.swift in Sources */,
 				111308B02A150E1F00711276 /* ScorerApp.swift in Sources */,
@@ -371,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				118220B62A173960000B1BF0 /* TimerView.swift in Sources */,
+				1193C3E02A1A558A0068BC9B /* BoardDetailView.swift in Sources */,
 				118220B42A1737D5000B1BF0 /* BadmintonPauseView.swift in Sources */,
 				118220C52A18AB5D000B1BF0 /* ScoreBoardView.swift in Sources */,
 				111308DE2A15BF6200711276 /* SportStartView.swift in Sources */,
@@ -380,15 +400,19 @@
 				111308DA2A15BCCF00711276 /* TrainingChart.swift in Sources */,
 				111308C42A150E2300711276 /* ContentView.swift in Sources */,
 				111308D82A15BA7000711276 /* SportRow.swift in Sources */,
+				1193C3DA2A1A448C0068BC9B /* BoardStore.swift in Sources */,
 				118220BF2A17AA70000B1BF0 /* WorkoutType.swift in Sources */,
 				111308DC2A15BCE800711276 /* SportsList.swift in Sources */,
 				118220B02A172371000B1BF0 /* WorkoutCellView.swift in Sources */,
 				118220AE2A17233A000B1BF0 /* WorkoutModel.swift in Sources */,
 				118220C32A17C714000B1BF0 /* WorkouttCellView.swift in Sources */,
 				118220B82A174794000B1BF0 /* AppState.swift in Sources */,
+				1193C3DE2A1A52140068BC9B /* BoardCellView.swift in Sources */,
 				111308E22A15DD2800711276 /* BadmintonView.swift in Sources */,
 				118220C92A18C3B8000B1BF0 /* RotateScoreBoardView.swift in Sources */,
 				118220AC2A170386000B1BF0 /* HapticTestView.swift in Sources */,
+				1193C3DC2A1A4DF70068BC9B /* BoardView.swift in Sources */,
+				1193C3D72A1A44810068BC9B /* Board.swift in Sources */,
 				1193C3CD2A19FC270068BC9B /* SessionDelegater.swift in Sources */,
 				118220C12A17ABA1000B1BF0 /* Game.swift in Sources */,
 				1193C3C72A190EA10068BC9B /* NewBadmintonView.swift in Sources */,
