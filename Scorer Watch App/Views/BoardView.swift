@@ -9,16 +9,16 @@ import SwiftUI
 
 struct BoardView: View {
     @EnvironmentObject var store: BoardStore
-    //    @EnvironmentObject var scorerState: ScorerState
+        @EnvironmentObject var scorerState: ScorerState
     
     @State var isActive : Bool = false
     @State var tagToShow: String?
     
-    //    @State private var path = [String]()
-    @State private var path = NavigationPath()
+    // 简便方式
+//    @State private var path = NavigationPath()
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $scorerState.path) {
             List(store.boards) { board in
 //                NavigationLink(destination: BoardDetailView(path: $path).environmentObject(board)
 //                ) {
@@ -31,7 +31,7 @@ struct BoardView: View {
                 
             }
             .navigationDestination(for: Board.self, destination: { board in
-                BoardDetailView(path: $path).environmentObject(board)
+                BoardDetailView().environmentObject(board)
             })
             //            .navigationBarTitle("Scorer")
             .listStyle(.carousel)
@@ -47,6 +47,6 @@ struct BoardView_Previews: PreviewProvider {
     
     static var previews: some View {
         BoardView().environmentObject(store)
-        //            .environmentObject(scorerState)
+                    .environmentObject(scorerState)
     }
 }

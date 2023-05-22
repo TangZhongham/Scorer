@@ -11,7 +11,7 @@ struct BoardDetailView: View {
     
     @EnvironmentObject var board: Board
     @EnvironmentObject var scorerState: ScorerState
-    @Binding var path: NavigationPath
+//    @Binding var path: NavigationPath
     
     @GestureState private var isDetectingLongPress = false
     @State var completedLongPress = false
@@ -252,10 +252,10 @@ struct BoardDetailView: View {
             //                }
             
             Button(action: {
-                //                    scorerState.popToRoot()
                 print("回到主页：")
-                print(path.count)
-                path.removeLast(path.count)
+//                print(path.count)
+//                path.removeLast(path.count)
+                scorerState.popToRoot()
             }) {
                 Text("Modify or get the fuck out :/")
             }
@@ -278,7 +278,8 @@ struct BoardDetailView: View {
 struct BoardDetailView_Previews: PreviewProvider {
     @StateObject static var board = Board.sampleBoards[1]
     @State static var path = NavigationPath()
+    @StateObject static private var scorerState = ScorerState()
     static var previews: some View {
-        BoardDetailView(path: $path).environmentObject(board)
+        BoardDetailView().environmentObject(board).environmentObject(scorerState)
     }
 }
