@@ -7,7 +7,21 @@
 
 import Foundation
 
-class Board: Identifiable, ObservableObject {
+class Board: Hashable, Identifiable, ObservableObject {
+    
+    public func hash(into hasher: inout Hasher) {
+            return hasher.combine(boardName)
+        }
+    
+    static func == (lhs: Board, rhs: Board) -> Bool {
+        if lhs.boardName == rhs.boardName {
+            return true
+        } else {
+            return false
+        }
+//        return lhs.boardName == rhs.boardName
+    }
+    
     let id: UUID
     
     // 记分板名称：简单记分板，三局两胜：11分制 等
@@ -45,7 +59,7 @@ class Board: Identifiable, ObservableObject {
 
 extension Board {
     static let sampleBoards: [Board] = [
-        Board(boardName: "简单计分板", boardLogo: "face.smiling", matches: 5, points: 21),
+        Board(boardName: "简单计分板", boardLogo: "face.smiling", matches: 5, points: 3),
         Board(boardName: "5局3胜，11分制", boardLogo: "person.2", matches: 5, points: 11),
         Board(boardName: "7局4胜，21分制", boardLogo: "person.and.arrow.left.and.arrow.right", matches: 7, points: 21),
         Board(boardName: "99局50胜，99分制", boardLogo: "gamecontroller.fill", matches: 99, points: 99)

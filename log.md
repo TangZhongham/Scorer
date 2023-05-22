@@ -122,14 +122,17 @@ https://developer.apple.com/documentation/watchconnectivity
 
 工具页布局可参考：https://stackoverflow.com/questions/60779781/swiftui-is-not-respecting-safe-area-for-apple-watch
 
-0522 
+0522 pop to root view 问题：https://stackoverflow.com/questions/73723771/navigationstack-not-affected-by-environmentobject-changes/
 
 ✅ 解决大横条“bug” 问题
+
+0522 ✅ 解决回root view 的问题。
 
 ## 学习心得
 
 0521 原本board 类设置成struct 且非Observable Object 同时 View 里面用Binding 只提供了 展示功能，没有留 tap +1 功能。根本原因是开发还不熟悉。于是大改成了 Observable Object。
 同时 发现 Observed Object 总是要塞变量 View(model:a) 于是改成了 environmentObject 。好处是 call view 的时候只需要 View.environmentObject(xx)
+
 
 ## BUG 记录
 
