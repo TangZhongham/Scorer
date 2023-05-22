@@ -130,6 +130,13 @@ https://developer.apple.com/documentation/watchconnectivity
 ✅ 解决回root view 的问题。
 ✅ 完成 editview 的 复位，旋转，结束 功能。至此基本功能完成，花了5天（有点长，但是熟悉了项目架构基本开发方案）。
 
+0523
+
+❎ 还差修改功能，目前预计加上 整个board 的修改加上。
+❎ 网球？
+❎ 时间记录还没动笔
+❎ pro 功能添加 运动记录功能
+
 ## 学习心得
 
 0521 原本board 类设置成struct 且非Observable Object 同时 View 里面用Binding 只提供了 展示功能，没有留 tap +1 功能。根本原因是开发还不熟悉。于是大改成了 Observable Object。
