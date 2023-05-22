@@ -9,21 +9,17 @@ import SwiftUI
 
 struct BoardView: View {
     @EnvironmentObject var store: BoardStore
-        @EnvironmentObject var scorerState: ScorerState
+    @EnvironmentObject var scorerState: ScorerState
     
     @State var isActive : Bool = false
     @State var tagToShow: String?
     
     // 简便方式
-//    @State private var path = NavigationPath()
+    //    @State private var path = NavigationPath()
     
     var body: some View {
         NavigationStack(path: $scorerState.path) {
             List(store.boards) { board in
-//                NavigationLink(destination: BoardDetailView(path: $path).environmentObject(board)
-//                ) {
-//                    BoardCellView(board: board)
-//                }
                 NavigationLink(value: board)
                 {
                     BoardCellView(board: board)
@@ -47,6 +43,6 @@ struct BoardView_Previews: PreviewProvider {
     
     static var previews: some View {
         BoardView().environmentObject(store)
-                    .environmentObject(scorerState)
+            .environmentObject(scorerState)
     }
 }

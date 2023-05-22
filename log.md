@@ -126,7 +126,9 @@ https://developer.apple.com/documentation/watchconnectivity
 
 ✅ 解决大横条“bug” 问题
 
-0522 ✅ 解决回root view 的问题。
+0522 
+✅ 解决回root view 的问题。
+✅ 完成 editview 的 复位，旋转，结束 功能。至此基本功能完成，花了5天（有点长，但是熟悉了项目架构基本开发方案）。
 
 ## 学习心得
 

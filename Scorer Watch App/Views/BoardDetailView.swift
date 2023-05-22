@@ -250,15 +250,72 @@ struct BoardDetailView: View {
             //                Text("Modify or get the fuck out :/").onTapGesture {
             //                    scorerState.popToRoot()
             //                }
+//            VStack {
+//                        HStack(spacing: 30) {
+//                            VStack {
+//                                ZStack {
+//                                    Circle()
+//                                        .fill(Color.gray)
+//                                    Text("20")
+//                                        .font(.headline)
+//                                }
+//                                Text("Timer")
+//                            }
+//
+//                            VStack {
+//                                ZStack {
+//                                    Circle()
+//                                        .fill(Color.gray)
+//                                    Image(systemName: "hand.raised.fill")
+//                                }
+//                                Text("End")
+//                            }.onTapGesture {
+//                                scorerState.popToRoot()
+//                            }
+//
+//                        }
+//
+//                        HStack(spacing: 30) {
+//                            VStack {
+//                                ZStack {
+//                                    Circle()
+//                                        .fill(Color.gray)
+//                                    Image(systemName: "alarm.fill")
+//                                }
+//                                Text("Reminder")
+//                            }
+//                        }
+//                    }
             
-            Button(action: {
-                print("回到主页：")
-//                print(path.count)
-//                path.removeLast(path.count)
-                scorerState.popToRoot()
-            }) {
-                Text("Modify or get the fuck out :/")
-            }
+            VStack {
+                HStack(spacing: 30) {
+                    Button(action: {
+                        board.homeScore = 0
+                        board.rivalScore  = 0
+                        board.rivalPoints = 0
+                        board.homePoints = 0
+                        completedLongPress.toggle()
+                    }) {
+                        Text("Reset")
+                    }.clipShape(Circle())
+                    
+                    Button(action: {
+                        isRotate.toggle()
+                        completedLongPress.toggle()
+                    }) {
+                        Text("Rotate")
+                        
+                    }.clipShape(Circle())
+                }
+                HStack(spacing: 30) {
+                    Button(action: {
+                        print("回到主页：")
+                        //                print(path.count)
+                        //                path.removeLast(path.count)
+                        scorerState.popToRoot()
+                    }) {
+                        Text("End")
+                    }}}
         }
         
     }
